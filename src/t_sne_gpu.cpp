@@ -238,7 +238,7 @@ void TSNE::runWithCenterOfMass(double* data, double* tsne_results, int_least64_t
 	if (remaining_samples > 0 && verbose > 0)
 		printf("\nStarting placemenmt of %i remaining samples on the t-sne space through center of mass computation\n", remaining_samples);
 
-	int iterations = ceil((float)remaining_samples / (float)tsned_data_samples);
+	int iterations_local = ceil((float)remaining_samples / (float)tsned_data_samples);
 	int this_iter = 1;
 	while (remaining_samples > 0){
 
@@ -307,7 +307,7 @@ void TSNE::runWithCenterOfMass(double* data, double* tsne_results, int_least64_t
 
 		all_dist->clear();
 		free(distances);
-		if (verbose > 1) printf("Finished %i iteration of %i of placing extra points on t-sne space\n", this_iter, iterations);
+		if (verbose > 1) printf("Finished %i iteration of %i of placing extra points on t-sne space\n", this_iter, iterations_local);
 		this_iter += 1;
 	}
 	free(actual_tsne_results); actual_tsne_results = NULL;
